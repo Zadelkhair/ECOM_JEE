@@ -36,15 +36,13 @@ public class LoginServlet extends HttpServlet {
 		//get request data
 		Object username = req.getParameter("username");
 		Object password = req.getParameter("password");
-		Object keepMeSignedIn = req.getParameter("keep-me-signed-in");
+		Object keepMeSignedIn = req.getParameter("keep_me_signed_in");
+		
 		
 		if(username==null)
 			return;
 		
 		if(password==null)
-			return;
-		
-		if(keepMeSignedIn==null)
 			return;
 		
 		// TODO check if request data are valid
@@ -53,12 +51,12 @@ public class LoginServlet extends HttpServlet {
 		AuthentificationController authController = new AuthentificationController();
 		Boolean state = authController.login((String)username,(String)password);
 		
-
 		
 		if(state) {
 			
-			// TODO if eaquest has keepMeSignedIn in true state
-			// i will save the loggin user in the browser cookies
+			// TODO if request has keepMeSignedIn in true state
+			// i will save the logged user in the browser cookies
+			if(keepMeSignedIn != null)
 			if(((String)keepMeSignedIn) == "on" ) {
 				// TODO CODE
 				System.out.println((String)keepMeSignedIn);
@@ -68,12 +66,8 @@ public class LoginServlet extends HttpServlet {
 			user.setUsername(user.getUsername());
 			user.readByUtilisateur();
 			
-			/*
-			 * HttpSession session = req.getSession(); 
-			 * session.setAttribute("user",user);
-			*/
-			
-			App.getInstance().auth.setAuthentificatedUser(user);
+			HttpSession session = req.getSession();
+			session.setAttribute("auth_id", user.getId());
 			
 			resp.sendRedirect(MyConfig.getHost()+"");
 			

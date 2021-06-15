@@ -27,5 +27,9 @@ public class Auth {
 
         return authentificated_user.getUsername();
     }
+    
+    public User getAuthentificatedUser() {
+    	return authentificated_user;
+    }
 
 }

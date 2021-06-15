@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="keep-me-signed-in" class="custom-control-input" id="newaccount">
+                                                <input type="checkbox" name="keep_me_signed_in" class="custom-control-input" id="newaccount">
                                                 <label class="custom-control-label" for="newaccount">Keep me signed
                                                     in</label>
                                             </div>
@@ -45,4 +45,4 @@
             <!-- Login End -->
 
 
-            <%@ include file="components/footer.jsp" %>
+        <%@ include file="components/footer.jsp" %>
