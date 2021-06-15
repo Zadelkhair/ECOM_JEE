@@ -8,20 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/*
 import com.ecomjeegi.models.User;
+*/
 
-public class AddServlet extends HttpServlet {
-	
-	public void service(HttpServletRequest rq,HttpServletResponse rs) throws IOException, ServletException {
+public class HomeServlet extends HttpServlet {
+
+	public void doGet(HttpServletRequest rq,HttpServletResponse rs) throws IOException, ServletException {
 		
-		User user = new User();
-		user.setId(2);
-		user.read();
-		
-		rq.setAttribute("user", user);
-		RequestDispatcher rqDispatcher = rq.getRequestDispatcher("index.jsp");
+		RequestDispatcher rqDispatcher = rq.getRequestDispatcher("home.jsp");
 		rqDispatcher.forward(rq, rs);
 		
 	}
-
+	
 }

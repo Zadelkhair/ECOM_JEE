@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.ecomjeegi.app.Database;
+
 public abstract class Model {
 
     public int id = -1;
