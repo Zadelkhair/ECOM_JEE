@@ -17,15 +17,15 @@ import com.ecomjeegi.app.App;
 import com.ecomjeegi.models.User;
 
 /**
- * Servlet Filter implementation class AuthFilter
+ * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/authfilter")
-public class AuthFilter implements Filter {
+@WebFilter("/LoginFilter")
+public class LoginFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public AuthFilter() {
+    public LoginFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -40,27 +40,27 @@ public class AuthFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
+		System.out.print("login filter");
 		
-		System.out.print("Auth filter");
 		
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpSession session = req.getSession();
 		
 		Object auth_id = session.getAttribute("auth_id");
 		//if session containe's auth 
-		if(auth_id != null) {
+		
+		
+		if(auth_id == null || ((int)auth_id == -1)) {
 			
-			User user = new User();
-			user.setId((int)auth_id);
-			user.read();
+			HttpServletResponse res = (HttpServletResponse) response;
+			res.sendRedirect(MyConfig.getHost()+"");
 			
-			System.out.println(user);
-			
-			App.getInstance().auth.setAuthentificatedUser(user);
-			
+			return;
 		}
 
 		chain.doFilter(request, response);
+		
 	}
 
 	/**

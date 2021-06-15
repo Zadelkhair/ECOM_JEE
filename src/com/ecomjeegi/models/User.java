@@ -180,7 +180,7 @@ public class User extends Model {
 
 		List<Object> params = new ArrayList<>();
     	params.add(this.getUsername());
-        List<Map<String, Object>> rows = Database.getInstance().executeQuery("SELECT * FROM users WHERE utilisateur = ? limit 1;",params);
+        List<Map<String, Object>> rows = Database.getInstance().executeQuery("SELECT * FROM users WHERE username  = ? limit 1;",params);
 
         if(rows != null){
             if(rows.size()==1){
@@ -190,6 +190,15 @@ public class User extends Model {
         }
         
         return false;
+    }
+    
+    public Role role() {
+    	
+    	Role role = new Role();
+    	role.setId(this.getRole_id());
+    	role.read();
+    	
+    	return role;
     }
 
 }

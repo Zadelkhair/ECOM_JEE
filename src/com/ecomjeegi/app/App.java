@@ -15,6 +15,10 @@ public class App {
     //functions like logout , login ...
     public Auth auth;
     
+    public Auth getAuth() {
+    	return this.auth;
+    }
+    
     private App() {
     	this.db = Database.getInstance();
     	this.auth = new Auth();

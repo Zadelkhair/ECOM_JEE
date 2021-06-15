@@ -13,19 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ecomjeegi.MyConfig;
-import com.ecomjeegi.app.App;
-import com.ecomjeegi.models.User;
 
 /**
- * Servlet Filter implementation class AuthFilter
+ * Servlet Filter implementation class LogoutFilter
  */
-@WebFilter("/authfilter")
-public class AuthFilter implements Filter {
+@WebFilter("/LogoutFilter")
+public class LogoutFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public AuthFilter() {
+    public LogoutFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -41,23 +39,21 @@ public class AuthFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		System.out.print("Auth filter");
 		
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpSession session = req.getSession();
 		
 		Object auth_id = session.getAttribute("auth_id");
 		//if session containe's auth 
-		if(auth_id != null) {
+		
+		System.out.println("Logout auth: "+ ( auth_id != null && ((int)auth_id != -1) ));
+		
+		if(auth_id != null &&((int)auth_id != -1)) {
 			
-			User user = new User();
-			user.setId((int)auth_id);
-			user.read();
+			HttpServletResponse res = (HttpServletResponse) response;
+			res.sendRedirect(MyConfig.getHost()+"");
 			
-			System.out.println(user);
-			
-			App.getInstance().auth.setAuthentificatedUser(user);
-			
+			return;
 		}
 
 		chain.doFilter(request, response);

@@ -63,8 +63,10 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 			User user = new User();
-			user.setUsername(user.getUsername());
+			user.setUsername((String)username);
 			user.readByUtilisateur();
+			
+			System.out.print("LoginServ: " + user.getId());
 			
 			HttpSession session = req.getSession();
 			session.setAttribute("auth_id", user.getId());

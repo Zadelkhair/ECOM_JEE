@@ -14,19 +14,22 @@
                                 <div class="login-form">
                                     <div class="row">
                                         <div class="col-12">
-                                            <h2 class="mb-5" >Login</h2>
+                                            <h2 class="mb-5">Login</h2>
                                         </div>
                                         <div class="col-12">
                                             <label>E-mail / Username</label>
-                                            <input class="form-control" type="text" name="username" placeholder="E-mail / Username">
+                                            <input class="form-control" type="text" name="username"
+                                                placeholder="E-mail / Username">
                                         </div>
                                         <div class="col-12">
                                             <label>Password</label>
-                                            <input class="form-control" type="password" name="password" placeholder="Password">
+                                            <input class="form-control" type="password" name="password"
+                                                placeholder="Password">
                                         </div>
                                         <div class="col-12">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="keep_me_signed_in" class="custom-control-input" id="newaccount">
+                                                <input type="checkbox" name="keep_me_signed_in"
+                                                    class="custom-control-input" id="newaccount">
                                                 <label class="custom-control-label" for="newaccount">Keep me signed
                                                     in</label>
                                             </div>
@@ -37,12 +40,11 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Login End -->
 
-
-        <%@ include file="components/footer.jsp" %>
+            <%@ include file="components/footer.jsp" %>
