@@ -83,13 +83,14 @@
 	</servlet-mapping>
 
 	<servlet-mapping>
-		<servlet-name>MyAccountServlet</servlet-name>
-		<url-pattern>/account</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
 		<servlet-name>ProductListServlet</servlet-name>
 		<url-pattern>/product/list</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>MyAccountServlet</servlet-name>
+		<url-pattern>/account</url-pattern>
 	</servlet-mapping>
 
 
