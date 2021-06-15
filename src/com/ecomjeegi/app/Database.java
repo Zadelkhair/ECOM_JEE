@@ -1,10 +1,12 @@
-package com.ecomjeegi.models;
+package com.ecomjeegi.app;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.ServletContext;
 
 public class Database {
 

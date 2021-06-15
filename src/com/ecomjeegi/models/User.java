@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ecomjeegi.app.Database;
+
 
 public class User extends Model {
 
@@ -159,6 +161,35 @@ public class User extends Model {
         return new User();
     }
 
+	
     //Custom methods
+    public long countByPasswordAndUsername() {
+		List<Object> params = new ArrayList<>();
+		params.add(this.getUsername());
+		params.add(this.getPassword());
+		Object o = Database.getInstance().executeScalar("SELECT count(*) FROM users WHERE username = ? AND password = ?",params );
+
+        if(o==null)
+            return 0;
+
+        return (long)o;
+	}
+    
+
+    public boolean readByUtilisateur() {
+
+		List<Object> params = new ArrayList<>();
+    	params.add(this.getUsername());
+        List<Map<String, Object>> rows = Database.getInstance().executeQuery("SELECT * FROM users WHERE utilisateur = ? limit 1;",params);
+
+        if(rows != null){
+            if(rows.size()==1){
+                readRow(rows.get(0));
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
 }
