@@ -1,23 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
- 	
- 	<servlet>
-  		<servlet-name>homeServlet</servlet-name>
-  		<servlet-class>com.ecomjeegi.HomeServlet</servlet-class>
-  	</servlet>
-  	<servlet>
-  		<servlet-name>loginServlet</servlet-name>
-  		<servlet-class>com.ecomjeegi.LoginServlet</servlet-class>
-  	</servlet>
-  	
+
+	<servlet>
+		<servlet-name>homeServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.HomeServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>WishlistServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.WishlistServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ContactServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.ContactServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ProductDetailsServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.ProductDetailsServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>CartServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.CartServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>CheckoutServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.CheckoutServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>MyAccountServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.MyAccountServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ProductListServlet</servlet-name>
+		<servlet-class>com.ecomjeegi.ProductListServlet</servlet-class>
+	</servlet>
+
+
 	<servlet-mapping>
 		<servlet-name>homeServlet</servlet-name>
 		<url-pattern></url-pattern>
 	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>loginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-	
-	
+
+	<servlet-mapping>
+		<servlet-name>WishlistServlet</servlet-name>
+		<url-pattern>/wishlist</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ContactServlet</servlet-name>
+		<url-pattern>/contact</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ProductDetailsServlet</servlet-name>
+		<url-pattern>/product/details</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CartServlet</servlet-name>
+		<url-pattern>/cart</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CheckoutServlet</servlet-name>
+		<url-pattern>/checkout</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>MyAccountServlet</servlet-name>
+		<url-pattern>/account</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ProductListServlet</servlet-name>
+		<url-pattern>/product/list</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>
