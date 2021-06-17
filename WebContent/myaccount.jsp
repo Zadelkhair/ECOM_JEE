@@ -24,18 +24,24 @@
 							<div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
 								<a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab"
 									role="tab"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
+								
 								<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i
 										class="fa fa-shopping-bag"></i>My Orders</a>
+
+								<a class="nav-link" id="categories-nav" data-toggle="pill" href="#orders-tab"
+									role="tab"><i class="fa fa-shopping-bag"></i>ِCategories</a>
+								
 								<a class="nav-link" id="orders-nav" data-toggle="pill" href="#reviews-tab" role="tab"><i
-									class="fa fa-shopping-bag"></i>My Reviews</a>
+										class="fa fa-shopping-bag"></i>My Reviews</a>
+								
 								<a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab"
 									role="tab"><i class="fa fa-map-marker-alt"></i>address</a>
+							
 								<a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab"
 									role="tab"><i class="fa fa-user"></i>Account Details</a>
 								<form id="logoutForm" action="${MyConfig.getHost()}logout" method="post">
 								</form>
-								<a class="nav-link" href="#"
-									onclick="document.getElementById('logoutForm').submit();">
+								<a class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit();">
 									<i class="fa fa-sign-out-alt"></i>Logout</a>
 							</div>
 						</div>
@@ -101,7 +107,7 @@
 									</div>
 								</div>
 
-								<div class="tab-pane fade" id="reviews-tab" role="tabpanel" aria-labelledby="orders-nav">
+								<div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
 									<div class="table-responsive">
 										<table class="table table-bordered">
 											<thead class="thead-dark">
@@ -143,7 +149,51 @@
 										</table>
 									</div>
 								</div>
-								
+
+								<div class="tab-pane fade" id="reviews-tab" role="tabpanel"
+									aria-labelledby="orders-nav">
+									<div class="table-responsive">
+										<table class="table table-bordered">
+											<thead class="thead-dark">
+												<tr>
+													<th>No</th>
+													<th>Product</th>
+													<th>Date</th>
+													<th>Price</th>
+													<th>Status</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>Product Name</td>
+													<td>01 Jan 2020</td>
+													<td>$99</td>
+													<td>Approved</td>
+													<td><button class="btn">View</button></td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>Product Name</td>
+													<td>01 Jan 2020</td>
+													<td>$99</td>
+													<td>Approved</td>
+													<td><button class="btn">View</button></td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>Product Name</td>
+													<td>01 Jan 2020</td>
+													<td>$99</td>
+													<td>Approved</td>
+													<td><button class="btn">View</button></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
 								<div class="tab-pane fade" id="payment-tab" role="tabpanel"
 									aria-labelledby="payment-nav">
 									<h4>Payment Method</h4>
@@ -178,7 +228,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="tab-pane fade" id="account-tab" role="tabpanel"
 									aria-labelledby="account-nav">
 									<h4>Account Details</h4>
