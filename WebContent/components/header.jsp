@@ -95,9 +95,6 @@
                                     <div class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">${App.getInstance().auth.authentificatedUser.username}</a>
                                         <div class="dropdown-menu">
-                                        	<c:if test="${App.getInstance().auth.authentificatedUser.role().name == "admin"}">
-                                        		<a href="${MyConfig.getHost()}admin" class="dropdown-item">My account</a>
-                                        	</c:if>
                                             <a href="${MyConfig.getHost()}myaccount" class="dropdown-item">My account</a>
                                             <form id="logoutForm" action="${MyConfig.getHost()}logout" method="post" >
                                             </form>

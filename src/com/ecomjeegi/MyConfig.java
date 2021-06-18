@@ -3,19 +3,20 @@ package com.ecomjeegi;
 public class MyConfig {
 	
 	public static String getHost() {
-		return "http://localhost:8081/ecom_jee_gi/";
+		return "http://localhost:8082/ecom_jee_gi/";
 	}
 	public static String getDbUrl(){
-		return "jdbc:mysql://127.0.0.1";
+		return "jdbc:mysql://freedb.tech:3306";
 	}
 	public static String getDbName(){
-		return "e_comerce_db";
+
+		return "freedbtech_izoehhebfh";
 	}
 	public static String getDbUserName(){
-		return "root";
+		return "freedbtech_hamzaayach";
 	}
 	public static String getDbPassword(){
-		return "";
+		return "1234AZERTY";
 	}
 
 	

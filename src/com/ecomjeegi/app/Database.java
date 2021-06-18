@@ -8,6 +8,8 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 
+import com.ecomjeegi.MyConfig;
+
 public class Database {
 
 
@@ -32,7 +34,7 @@ public class Database {
         }
 
         if(db == null) {
-            db = new Database("jdbc:mysql://127.0.0.1","e_comerce_db","root","");
+            db = new Database(MyConfig.getDbUrl(),MyConfig.getDbName(),MyConfig.getDbUserName(),MyConfig.getDbPassword());
     	}
 
     	return db;
@@ -131,9 +133,13 @@ public class Database {
         }catch(SQLException se){
             //Handle errors for JDBC
             se.printStackTrace();
+            throw new RuntimeException("Cannot connect to database", se);
+
         }catch(Exception e) {
             //Handle errors for Class.forName
             e.printStackTrace();
+            throw new RuntimeException("Cannot connect to database", e);
+
         }
     }
 
