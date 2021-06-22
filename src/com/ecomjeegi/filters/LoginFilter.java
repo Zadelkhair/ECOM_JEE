@@ -54,7 +54,7 @@ public class LoginFilter implements Filter {
 		if(auth_id == null || ((int)auth_id == -1)) {
 			
 			HttpServletResponse res = (HttpServletResponse) response;
-			res.sendRedirect(MyConfig.getHost()+"");
+			res.sendRedirect(MyConfig.getHost()+"login");
 			
 			return;
 		}

@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,17 @@ import javax.servlet.http.HttpSession;
 import com.ecomjeegi.MyConfig;
 import com.ecomjeegi.app.App;
 import com.ecomjeegi.models.User;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * Servlet Filter implementation class AuthFilter
@@ -41,7 +53,7 @@ public class AuthFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-		System.out.print("Auth filter");
+		System.out.println("Auth filter");
 		
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpSession session = req.getSession();
@@ -51,8 +63,24 @@ public class AuthFilter implements Filter {
 		if(auth_id != null) {
 			
 			User user = new User();
-			user.setId((int)auth_id);
+			user.setId( Integer.parseInt(auth_id.toString()));
 			user.read();
+			
+			Cookie cookies[] = req.getCookies();
+			
+			for(Cookie c : cookies) {
+				
+				
+				if(c.equals("shoopingList")) {
+					JsonParser jsonParser = new JsonParser();
+					JsonArray jsonArr = (JsonArray)jsonParser.parse(c.getValue().toString());
+					Gson googleJson = new Gson();
+		            ArrayList jsonObjList = googleJson.fromJson(jsonArr, ArrayList.class);
+		            System.out.println("List size is : "+jsonObjList.size());
+		                    System.out.println("List Elements are  : "+jsonObjList.toString());
+				}
+				
+			}
 			
 			System.out.println(user);
 			

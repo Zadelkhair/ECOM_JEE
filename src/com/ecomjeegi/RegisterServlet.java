@@ -29,6 +29,8 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+		//errors map will carre all request errors
 		Map<String, Object> errors = new HashMap<String, Object>();
 		
 		//get request data

@@ -200,5 +200,13 @@ public class User extends Model {
     	
     	return role;
     }
+    
+    public String getRole() {
+    	return this.role().getName();
+    }
+
+	public List<User> getCustomers() {
+		return getAllAsModels(true);
+	}
 
 }

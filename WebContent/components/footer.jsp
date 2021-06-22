@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 
+		<%@ page import="com.ecomjeegi.MyConfig" %>
+
         <!-- Footer Start -->
         <div class="footer">
             <div class="container-fluid">
@@ -95,10 +97,11 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/slick/slick.min.js"></script>
+        <script src="${MyConfig.getHost()}lib/easing/easing.min.js"></script>
+        <script src="${MyConfig.getHost()}lib/slick/slick.min.js"></script>
+        <script src="${MyConfig.getHost()}lib/notify.min.js" ></script>
         
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+        <script src="${MyConfig.getHost()}js/main.js"></script>
     </body>
 </html>

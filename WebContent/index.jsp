@@ -4,7 +4,7 @@
     <%@ include file="components/header.jsp" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <div class="containr">
+    <div class="container">
         <h1>
         
         ${label}

@@ -14,31 +14,33 @@ public class Order extends Model {
     }
 
     //felds
-	private int delivery_charges;
+	private float delivery_charges;
 	private int transaction_status;
 	private java.sql.Date ship_date;
 	private java.sql.Date order_date;
 	private int user_id;
+	private float price;
 
 
     //Constructors
     public Order(){}
 
-    public Order(int id,int delivery_charges,int transaction_status,java.sql.Date ship_date,java.sql.Date order_date,int user_id,int order_id) {
+    public Order(int id,float delivery_charges,int transaction_status,java.sql.Date ship_date,java.sql.Date order_date,int user_id,float price) {
         this.id = id;
 		this.delivery_charges = delivery_charges;
 		this.transaction_status = transaction_status;
 		this.ship_date = ship_date;
 		this.order_date = order_date;
 		this.user_id = user_id;
+		this.price = price;
 
     }
 
     //Geter and seters
-	public int getDelivery_charges() {
+	public float getDelivery_charges() {
 	   return delivery_charges;
 	}
-	public void setDelivery_charges(int delivery_charges) {
+	public void setDelivery_charges(float delivery_charges) {
 	   this.delivery_charges = delivery_charges;
 	}
 
@@ -75,6 +77,14 @@ public class Order extends Model {
 	}
 
 
+	public float getPrice() {
+	   return price;
+	}
+	public void setPrice(float price) {
+	   this.price = price;
+	}
+
+
 
 
     //
@@ -82,11 +92,12 @@ public class Order extends Model {
     public boolean readRow(Map<String, Object> row) {
 
         this.id = (int) row.get("id");
-		this.delivery_charges = (int) row.get("delivery_charges");
+		this.delivery_charges = (float) row.get("delivery_charges");
 		this.transaction_status = (int) row.get("transaction_status");
 		this.ship_date = (java.sql.Date) row.get("ship_date");
 		this.order_date = (java.sql.Date) row.get("order_date");
 		this.user_id = (int) row.get("user_id");
+		this.price = (float) row.get("price");
 
 
         return true;
@@ -101,6 +112,7 @@ public class Order extends Model {
 		row.put("ship_date",ship_date);
 		row.put("order_date",order_date);
 		row.put("user_id",user_id);
+		row.put("price",price);
 
 
         return row;
@@ -110,7 +122,15 @@ public class Order extends Model {
     public Model getInstance() {
         return new Order();
     }
-
+    
+    public User getUser() {
+    	User user = new User();
+    	user.setId(user_id);
+    	user.read();
+    	
+    	return user; 
+    }
+    
     //Custom methods
 
 }

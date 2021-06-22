@@ -19,7 +19,7 @@ public abstract class Model {
     public int getId(){
         return this.id;
     }
-
+    
     //
     public abstract boolean readRow(Map<String, Object> row);
 
@@ -115,14 +115,14 @@ public abstract class Model {
         return this.all;
     }
 
-	public List<Model> getAllAsModels(boolean b) {
+	public <T extends Model> List<T> getAllAsModels(boolean b) {
 		
-		List<Model> models = new ArrayList();
+		List<T> models = new ArrayList();
 		
 		List<Map<String, Object>> rows = getAll(b);
 		
 		for(Map<String, Object> row : rows) {
-			Model model = getInstance();
+			T model = (T)getInstance();
 			model.readRow(row);
 			models.add(model);
 		}
@@ -130,6 +130,43 @@ public abstract class Model {
 		return models;
 	}
     
+	public List<Map<String, Object>> getAllPagination(boolean forceload,int page,int numberofitems){
+
+        if(this.all == null || forceload){
+
+            this.all = new ArrayList<>();
+
+            List<Object> params = new ArrayList();
+            params.add(page);
+            params.add(numberofitems);
+			this.all = Database.getInstance().executeQuery("SELECT * FROM "+tableName()+" LIMIT ?,?",params);
+
+        }
+
+        return this.all;
+    }
+
+	public <T extends Model> Pagination<T> getAllPaginationAsModels(boolean b,int page,int numberofitemsperpage) {
+		
+		List<T> models = new ArrayList();
+		
+		List<Map<String, Object>> rows = getAllPagination(b, page, numberofitemsperpage);
+		
+		for(Map<String, Object> row : rows) {
+			T model = (T)getInstance();
+			model.readRow(row);
+			models.add(model);
+		}
+		
+		T model = (T)getInstance();
+		int numberofitems = Math.toIntExact(model.count());
+		
+		Pagination<T> modelPagination = new Pagination<T>(models, page, numberofitems, numberofitemsperpage, 10);
+		
+		
+		return modelPagination;
+	}
+	
     public boolean isExist(){
 
         List<Object> params = new ArrayList<>();
@@ -163,6 +200,113 @@ public abstract class Model {
 
         return (int)o;
 
+    }
+    
+    class Pagination<T extends Model>{
+    	
+    	private List<T> items;
+    	private int page;
+    	private int lastpage;
+    	private int numberofitemsperpage;
+    	private int numberofitems;
+    	private int range;
+    	private int firstpageinrange;
+    	private int lastpageinrange;
+    	
+    	public Pagination(List<T> items,int page,int numberofitems,int numberofitemsperpage,int range) {
+			items = items;
+			page = page;
+			lastpage = -1;
+			numberofitemsperpage = numberofitemsperpage;
+			numberofitems = numberofitems;
+			range = range;
+			firstpageinrange = -1;
+			lastpageinrange = -1;
+			calcRange();
+		}
+    	
+    	public Pagination(List<T> items,int page,int numberofitems,int numberofitemsperpage) {
+			items = items;
+			page = page;
+			lastpage = -1;
+			numberofitemsperpage = -1;
+			numberofitems = -1;
+			range = -1;
+			firstpageinrange = -1;
+			lastpageinrange = -1;
+			calcRange();
+		}
+
+		public List<T> getItems() {
+			return items;
+		}
+
+		public int getPage() {
+			return page;
+		}
+
+		public void setPage(int page) {
+			this.page = page;
+		}
+		
+		
+		public int getNumberofitems() {
+			return numberofitems;
+		}
+
+		public int getLastpage() {
+			return lastpage;
+		}
+
+		public int getNumberofitemsperpage() {
+			return numberofitemsperpage;
+		}
+
+		public int getRange() {
+			return range;
+		}
+
+		public int getFirstpageinrange() {
+			return firstpageinrange;
+		}
+
+		public int getLastpageinrange() {
+			return lastpageinrange;
+		}
+
+		private void calcRange() {
+			
+			if(this.page != -1 && this.numberofitems != -1 && numberofitemsperpage != -1 && range != -1 ) {
+				
+				lastpage = numberofitems/numberofitemsperpage + 1;
+				
+				int marge = range;
+				
+				firstpageinrange = page - marge/2;
+				marge -= marge/2;
+				
+				if(firstpageinrange<=0) {
+					int canceledMarge = firstpageinrange * -1 + 1;
+					firstpageinrange += canceledMarge;
+					marge += canceledMarge;
+				}
+				
+				lastpageinrange = page + marge;
+				marge -= marge;
+				
+				if(lastpageinrange>lastpage) {
+					int canceledMarge = lastpageinrange-lastpage;
+					lastpageinrange -= canceledMarge;
+					marge += canceledMarge;
+				}
+				
+				if(marge>0 && firstpageinrange>0 && marge<firstpageinrange) {
+					firstpageinrange -= marge;
+					marge -= marge;
+				}
+				
+			}
+		}
     }
 
 }

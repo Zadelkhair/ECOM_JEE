@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ecomjeegi.app.Database;
+
 
 public class Review extends Model {
 
@@ -64,9 +66,6 @@ public class Review extends Model {
 	   this.user_id = user_id;
 	}
 
-
-
-
     //
     @Override
     public boolean readRow(Map<String, Object> row) {
@@ -99,6 +98,56 @@ public class Review extends Model {
         return new Review();
     }
 
+	public List<Map<String, Object>> getAllProductReviews(Object id) {
+		 
+		List<Object> params = new ArrayList<Object>();
+		params.add(id);
+		
+		this.all = Database.getInstance().executeQuery("SELECT * FROM "+tableName()+" WHERE product_id = ? ",params);
+
+        return this.all;
+        
+	}
+	
+	public List<Review> getAllProductReviewsAsModel(Object id) {
+		
+		List<Review> models = new ArrayList();
+		
+		List<Map<String, Object>> rows = getAllProductReviews(id);
+		
+		if(rows!=null)
+		for(Map<String, Object> row : rows) {
+			Review model = (Review)getInstance();
+			model.readRow(row);
+			models.add(model);
+		}
+		
+		return models;
+		
+	}
+
     //Custom methods
+	
+	public String getUsername() {
+		
+		User user = new User();
+		user.setId(this.getUser_id());
+		user.read();
+		
+		return user.getUsername();
+	}
+
+	public boolean createAndDeletePrev() {
+		
+		Map<String,Object> row = toRow();
+
+        List<Object> params = new ArrayList<>();
+        params.add(this.product_id);
+        params.add(this.user_id);
+
+        Database.getInstance().executeUpdate("DELETE FROM "+tableName()+" WHERE product_id=? AND user_id=? ;",params);
+		
+		return this.create();
+	}
 
 }

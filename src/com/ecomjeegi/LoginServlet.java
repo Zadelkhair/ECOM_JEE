@@ -72,7 +72,11 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("auth_id", user.getId());
 			
 			resp.sendRedirect(MyConfig.getHost()+"");
-			
+			return;
+		}
+		else {
+			resp.sendRedirect(req.getRequestURI()+"?error");
+			return;
 		}
 		
 	}
