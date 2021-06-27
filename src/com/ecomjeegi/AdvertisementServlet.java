@@ -173,6 +173,7 @@ public class AdvertisementServlet extends HttpServlet {
 			    imagePath = "uploads"+File.separator+"images"+File.separator+"ads"+"_"+generateString()+"_"+fileName;
 			    imagePath = imagePath.replace(' ', '_');
 			    String localStorageImagePath = getServletContext().getRealPath(File.separator+imagePath);
+			    System.out.println("imgpath : "+localStorageImagePath);
 		        File file = new File(localStorageImagePath);
 		        copyInputStreamToFile(fileContent, file);
 			}
@@ -259,6 +260,7 @@ public class AdvertisementServlet extends HttpServlet {
 				    imagePath = "uploads"+File.separator+"images"+File.separator+"ads"+"_"+generateString()+"_"+fileName;
 				    imagePath = imagePath.replace(' ', '_');
 				    String localStorageImagePath = getServletContext().getRealPath(File.separator+imagePath);
+				    System.out.println("imgpath : "+localStorageImagePath);
 			        File file = new File(localStorageImagePath);
 			        copyInputStreamToFile(fileContent, file);
 			        
@@ -268,10 +270,6 @@ public class AdvertisementServlet extends HttpServlet {
 				
 			}
 			
-			
-			
-	        
-
 			advertisement.setDescription(description.toString());
 			
 			if(position!=null) {
