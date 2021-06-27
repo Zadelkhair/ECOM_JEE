@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2021 at 02:15 PM
+-- Generation Time: Jun 27, 2021 at 03:29 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -41,19 +41,27 @@ CREATE TABLE `actions` (
 CREATE TABLE `advertisements` (
   `id` int(11) NOT NULL,
   `image` varchar(500) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL
+  `description` varchar(500) DEFAULT NULL,
+  `position` int(11) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `advertisements`
 --
 
-INSERT INTO `advertisements` (`id`, `image`, `description`) VALUES
-(1, 'uploads\\images\\ads_6dda8dfa-d433-4dd7-ba4e-b1b138fea3bf_DPS-Makeup-Essentials-Pt1_07.jpg', 'Shop the best new makeup arrivals now,	'),
-(2, 'uploads\\images\\ads_7b50df6b-1744-4cc0-8dbb-11815ca15322_81541636-fashion-summer-women-clothes-set-with-accessories-flat-lay-top-view.jpg', 'It\'s all about cute summer outfits. Summer is here and it\'s time to celebrate with summer clothes for women.	'),
-(3, 'uploads\\images\\ads_b3a0ad46-8444-486d-bc01-a642f0945aa5_102654925-summer-women-s-clothing-and-accessories-on-a-brown-background.jpg', 'Shop Women\'s Shoes at DSW. Check out our huge selection with free shipping every day!	'),
-(4, 'uploads\\images\\ads_e71a87b3-17f6-4755-bba7-9bb1f2f902fb_2019-Kids-Clothes-Children-Clothing-Sets-Girls-Boutique-Outfits-Toddler-Fashion-Fall-Autumn-Top-Jeans-3.jpg', 'At The Children\'s Place, we\'ve got kids clothes in every size, color and trend-&#8203;setting style. '),
-(5, 'uploads\\images\\ads_15d466ea-184d-48e9-84c1-6778b99f63c2_595763b8588e0d4e3246fbde-large.jpg', 'Shop for children\'s clothing at next.co.uk. Next day delivery and free returns available. ');
+INSERT INTO `advertisements` (`id`, `image`, `description`, `position`) VALUES
+(1, 'uploads\\images\\ads_6dda8dfa-d433-4dd7-ba4e-b1b138fea3bf_DPS-Makeup-Essentials-Pt1_07.jpg', 'Shop the best new makeup arrivals now,	', 4),
+(2, 'uploads\\images\\ads_7b50df6b-1744-4cc0-8dbb-11815ca15322_81541636-fashion-summer-women-clothes-set-with-accessories-flat-lay-top-view.jpg', 'It\'s all about cute summer outfits. Summer is here and it\'s time to celebrate with summer clothes for women.	', 3),
+(3, 'uploads\\images\\ads_b3a0ad46-8444-486d-bc01-a642f0945aa5_102654925-summer-women-s-clothing-and-accessories-on-a-brown-background.jpg', 'Shop Women\'s Shoes at DSW. Check out our huge selection with free shipping every day!	', 1),
+(4, 'uploads\\images\\ads_e71a87b3-17f6-4755-bba7-9bb1f2f902fb_2019-Kids-Clothes-Children-Clothing-Sets-Girls-Boutique-Outfits-Toddler-Fashion-Fall-Autumn-Top-Jeans-3.jpg', 'At The Children\'s Place, we\'ve got kids clothes in every size, color and trend-&#8203;setting style. ', 5),
+(5, 'uploads\\images\\ads_de409638-a9ca-4e71-85c9-6abf35f9e41e_595763b8588e0d4e3246fbde-large.jpg', 'Shop for children\'s clothing at next.co.uk. Next day delivery and free returns available. ', 2),
+(6, 'uploads\\images\\ads_26eb6d8b-5fdf-4259-8148-8fdbae478e04_https___ae01.alicdn.com_kf_HTB1mYiNa6LuK1Rjy0Fhq6xpdFXaB_Baby-Girls-Clothing-Sets-2020-Summer-fashion-Print-Tops-and-Shorts-Kids-Clothes-Suits-3-4.jpg', 'At The Children\'s Place, we\'ve got kids clothes in every size, color and trend-&#8203;setting style.', 13),
+(7, 'uploads\\images\\ads_3e55b8c5-4c44-4252-9681-778d1f5eb3c3_6f874bf5887f01caab908ed0d4bdc110.jpg', 'Regarding Hijab clothing products, Modanisa.com present a wide range of quality products. New season Hijab clothing is one click away', 6),
+(8, 'uploads\\images\\ads_8825903e-2fcf-4b89-963f-c52ef34eb043_category-3.jpg', 'Check out our couple clothes selection for the very best in unique or custom, handmade pieces from our t-shirts shops', 8),
+(9, 'uploads\\images\\ads_ca456c2d-4fd9-4f77-9bce-9ab2c46ae0c7_14434.jpg', 'Safe Trading Kitchen Accessory on Leading B2B Platform. Get Factory Price on Kitchen Accessory. Highlights: Multiple Quotes Available, New User Guide Available', 9),
+(10, 'uploads\\images\\ads_51dc712c-5217-42cf-ac6e-3280ffccf0fa_category-4.jpg', 'Discover the latest in beauty at Sephora. Explore our unrivaled selection of makeup, skin care, fragrance and more from classic and emerging brands.\r\n', -1),
+(11, 'uploads\\images\\ads_1ecfd3a5-0281-4fcb-bbd7-6d46af227aae_shutterstock_384358651-1024x702-1.jpg', 'Here are 17 cleaning products to clean your entire house, from the bathroom to the living room: · Anywhere: Dyson V11 Outsize Cordless Vacuum.', 11),
+(12, 'uploads\\images\\ads_a5efbbbd-de6e-4609-b059-b109949514ed_beauty-products-1588098976.jpg', 'The UK\'s no.1 fragrance only retailer with free delivery on Eau de Parfum and Eau de Toilette by brands including Chanel, Dior, Tom Ford and Paco Rabanne.\r\n', 10);
 
 -- --------------------------------------------------------
 
@@ -64,16 +72,18 @@ INSERT INTO `advertisements` (`id`, `image`, `description`) VALUES
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `description` varchar(250) DEFAULT NULL
+  `description` varchar(250) DEFAULT NULL,
+  `fa_icon` varchar(250) NOT NULL DEFAULT 'fas fa-circle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `description`) VALUES
-(1, 'categorie 1', 'categorie 1'),
-(4, 'categorie 2', 'categorie 2');
+INSERT INTO `categories` (`id`, `name`, `description`, `fa_icon`) VALUES
+(1, 'categorie 1', 'categorie 1', 'fas fa-caret-square-right'),
+(4, 'categorie 2', 'categorie 2', 'fas fa-circle'),
+(5, 'categorie 3', 'categorie 3', 'fas fa-caret-square-right');
 
 -- --------------------------------------------------------
 
@@ -117,7 +127,8 @@ INSERT INTO `orders` (`id`, `delivery_charges`, `transaction_status`, `ship_date
 (7, 0, 0, NULL, '2021-06-21', 5, 200),
 (8, 0, 0, NULL, '2021-06-21', 5, 1800),
 (9, 0, 1, NULL, '2021-06-21', 5, 1600),
-(10, 0, -1, NULL, '2021-06-22', 9, 2900);
+(10, 0, -1, NULL, '2021-06-22', 9, 2900),
+(11, 0, 0, NULL, '2021-06-26', 2, 3000);
 
 -- --------------------------------------------------------
 
@@ -160,7 +171,11 @@ INSERT INTO `order_details` (`id`, `order_quantity`, `order_price`, `product_id`
 (20, 2, 400, 8, 10),
 (21, 3, 900, 10, 10),
 (22, 5, 1000, 6, 10),
-(23, 3, 600, 7, 10);
+(23, 3, 600, 7, 10),
+(24, 2, 400, 8, 11),
+(25, 4, 1200, 10, 11),
+(26, 3, 600, 7, 11),
+(27, 4, 800, 6, 11);
 
 -- --------------------------------------------------------
 
@@ -273,7 +288,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'admin'),
-(7, 'user');
+(7, 'user'),
+(8, 'superadmin');
 
 -- --------------------------------------------------------
 
@@ -323,7 +339,7 @@ INSERT INTO `users` (`id`, `username`, `address`, `city`, `country`, `phone`, `e
 (5, 'user', '104 RUE SOUSSA HAY NAIMA', 'Berrechid', 'Morocco', '0662855677', 'user@user.com', '', '104 RUE SOUSSA HAY NAIMA', 7),
 (6, 'hamza', '104 RUE SOUSSA HAY NAIMA', 'Berrechid', 'Morocco', '0600000000', 'hamza@hamza.com', '', '104 RUE SOUSSA HAY NAIMA', 7),
 (8, 'zadelkhair', '104 RUE SOUSSA HAY NAIMA', '', '', '0680096104', 'zad@zad.com', 'zadelkhair@password', '', 1),
-(9, 'YasserZad', '104 RUE SOUSSA HAY NAIMA', '', '', '0680096104', 'yasser@zad.com', '', '104 RUE SOUSSA HAY NAIMA', 7),
+(9, 'YasserZad', '104 RUE SOUSSA HAY NAIMA', '', '', '0680096104', 'yasser@zad.com', '', '104 RUE SOUSSA HAY NAIMA', 8),
 (10, 'newuser', '104 RUE SOUSSA HAY NAIMA', 'Berrechid', 'Morocco', '0600000001', 'newuser@gmail.com', 'newuser@password', '104 RUE SOUSSA HAY NAIMA', 7);
 
 --
@@ -440,13 +456,13 @@ ALTER TABLE `actions`
 -- AUTO_INCREMENT for table `advertisements`
 --
 ALTER TABLE `advertisements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -458,13 +474,13 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -494,7 +510,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
