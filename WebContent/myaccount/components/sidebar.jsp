@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 
     <div class="nav flex-column nav-pills" aria-orientation="vertical">
-        <a class="nav-link myaccount-nav-link" href="${MyConfig.getHost()}myaccount/order/"><i class="fa fa-shopping-bag"></i>Orders</a>
-        <a class="nav-link myaccount-nav-link" href="${MyConfig.getHost()}myaccount/details/"><i class="fa fa-user"></i>Account Details</a>
+        <a class="nav-link myaccount-nav-link" href="${MyConfig.getHost()}myaccount/myorders"><i class="fa fa-shopping-bag"></i>Orders</a>
+        <a class="nav-link myaccount-nav-link" href="${MyConfig.getHost()}myaccount/details"><i class="fa fa-user"></i>Account Details</a>
     </div>
 
     <script>

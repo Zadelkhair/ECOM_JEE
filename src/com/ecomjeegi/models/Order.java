@@ -119,7 +119,6 @@ public class Order extends Model {
 
         return row;
     }
-
     @Override
     public Model getInstance() {
         return new Order();
