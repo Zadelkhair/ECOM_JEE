@@ -98,11 +98,7 @@
 																			style="position: absolute; transform: translateY(-50%); top: 50%;right: 0;height: 100%;max-width: 100%;"
 																			class="img-fluid" alt="Sheep">
 																	</c:if>
-
 																</div>
-
-
-
 															</div>
 														</div>
 													</div>
@@ -163,7 +159,7 @@
 														<div class="form-group">
 														
 															<label for="description">supplier</label>
-															<select class="form-control" name="category_id">
+															<select class="form-control" name="supplier_id">
 																<c:forEach items="${suppliers}" var="supplier">
 
 																	<c:set var="selected" value=""></c:set>
