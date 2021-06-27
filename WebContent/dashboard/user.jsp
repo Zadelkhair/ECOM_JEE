@@ -130,17 +130,28 @@
 															<td>${user.id}</td>
 															<td>${user.username}</td>
 															<td>
+															
+																<c:set var="roleisset" value="false" />
+																
 																<c:if test="${user.role_id == null}">
 																	<span
 																		class="status-order canceled-status bg-danger">-</span>
+																		
+																		<c:set var="roleisset" value="true" />
 																</c:if>
 																<c:if test="${user.role_id == 1}">
 																	<span
-																		class="status-order in-progress-status bg-success">admin</span>
+																		class="status-order in-progress-status bg-success">${user.role}</span>
+																		<c:set var="roleisset" value="true" />
 																</c:if>
 																<c:if test="${user.role_id == 7}">
 																	<span
-																		class="status-order confirmed-status bg-primary">user</span>
+																		class="status-order confirmed-status bg-primary">${user.role}</span>
+																		<c:set var="roleisset" value="true" />
+																</c:if>
+																<c:if test="${!roleisset}">
+																	<span
+																		class="status-order confirmed-status bg-secondary">${user.role}</span>
 																</c:if>
 															</td>
 															<td>${user.city}</td>

@@ -159,23 +159,46 @@
 														</div>
 													</div>
 
-													<div class="col-12">
+													<div class="col-md-12">
 														<div class="form-group">
-															<label for="description">supplier_id </label>
-															<input type="number" name="supplier_id" id="description"
-																class="form-control" placeholder="supplier_id"
-																value="${product.supplier_id }"
-																aria-describedby="descriptionhelpId">
+														
+															<label for="description">supplier</label>
+															<select class="form-control" name="category_id">
+																<c:forEach items="${suppliers}" var="supplier">
+
+																	<c:set var="selected" value=""></c:set>
+
+																	<c:if test="${ product.supplier_id == supplier.id }">
+																		<c:set var="selected" value="selected"></c:set>
+																	</c:if>
+
+																	<option ${ selected } value="${supplier.id}">${supplier.supplier_name }</option>
+
+																</c:forEach>
+															</select>
+
 														</div>
 													</div>
 
-													<div class="col-12">
+													
+													<div class="col-md-12">
 														<div class="form-group">
-															<label for="description">category_id </label>
-															<input type="number" name="category_id" id="description"
-																class="form-control" placeholder="category_id"
-																value="${product.category_id  }"
-																aria-describedby="descriptionhelpId">
+														
+															<label for="description">categorie </label>
+															<select class="form-control" name="category_id">
+																<c:forEach items="${categories}" var="categorie">
+
+																	<c:set var="selected" value=""></c:set>
+
+																	<c:if test="${ product.category_id == categorie.id }">
+																		<c:set var="selected" value="selected"></c:set>
+																	</c:if>
+
+																	<option ${ selected } value="${categorie.id}">${categorie.name }</option>
+
+																</c:forEach>
+															</select>
+
 														</div>
 													</div>
 
@@ -235,8 +258,8 @@
 															<td>${prod.color}</td>
 															<td>${prod.garmentType}</td>
 															<td>${prod.rating}</td>
-															<td>${prod.supplier_id}</td>
-															<td>${prod.category_id}</td>
+															<td>${prod.supplier}</td>
+															<td>${prod.category}</td>
 															<td>
 																<a id="editBtn" style="background: none;border: none;"
 																	class="mr-2 p-0 m-0 text-success"

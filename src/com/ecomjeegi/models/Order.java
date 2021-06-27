@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ecomjeegi.app.Database;
+
 
 public class Order extends Model {
 
@@ -130,7 +132,34 @@ public class Order extends Model {
     	
     	return user; 
     }
+
+	public List<Map<String, Object>> getByUserId(boolean b) {
+		
+		if(this.all == null || b){
+
+            this.all = new ArrayList<>();
+
+            this.all = Database.getInstance().executeQuery("SELECT * FROM "+tableName()+" WHERE user_id = "+this.user_id);
+
+        }
+
+        return this.all;
+		
+	}
     
-    //Custom methods
+	public List<Order> getByUserIdAsModels(boolean b) {
+		
+		List<Order> models = new ArrayList();
+		
+		List<Map<String, Object>> rows = getByUserId(b);
+		
+		for(Map<String, Object> row : rows) {
+			Order model = (Order)getInstance();
+			model.readRow(row);
+			models.add(model);
+		}
+		
+		return models;
+	}
 
 }

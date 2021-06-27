@@ -108,7 +108,7 @@ public abstract class Model {
 
             this.all = new ArrayList<>();
 
-            this.all = Database.getInstance().executeQuery("SELECT * FROM "+tableName());
+            this.all = Database.getInstance().executeQuery("SELECT * FROM "+tableName()+" order by id desc");
 
         }
 
@@ -139,7 +139,7 @@ public abstract class Model {
             List<Object> params = new ArrayList();
             params.add(page);
             params.add(numberofitems);
-			this.all = Database.getInstance().executeQuery("SELECT * FROM "+tableName()+" LIMIT ?,?",params);
+			this.all = Database.getInstance().executeQuery("SELECT * FROM "+tableName()+" LIMIT ?,? order by id desc",params);
 
         }
 

@@ -50,6 +50,15 @@
 
 												<div class="col-12">
 													<div class="form-group">
+														<label for="fa_icon">Fontawsom icon</label>
+														<input type="text" name="fa_icon" id="fa_icon" class="form-control"
+															value="${categorie.fa_icon}" placeholder="fa_icon"
+															aria-describedby="namehelpId">
+													</div>
+												</div>
+
+												<div class="col-12">
+													<div class="form-group">
 														<label for="description">Description</label>
 														<input type="text" name="description" id="description"
 															class="form-control" placeholder="description"
@@ -80,6 +89,7 @@
 											<thead class="thead-dark">
 												<tr>
 													<th>No</th>
+													<th>Icon</th>
 													<th>Name</th>
 													<th>Description</th>
 													<th>Action</th>
@@ -89,6 +99,7 @@
 												<c:forEach items="${categories}" var="cat">	
 													<tr>
 														<td>${cat.id}</td>
+														<td><i class="${cat.fa_icon}" ></i></td>
 														<td>${cat.name}</td>
 														<td>${cat.description}</td>
 														<td>

@@ -19,6 +19,7 @@ import javax.servlet.http.Part;
 
 import com.ecomjeegi.models.Categorie;
 import com.ecomjeegi.models.Product;
+import com.ecomjeegi.models.Supplier;
 
 @MultipartConfig
 public class ProductServlet extends HttpServlet {
@@ -31,6 +32,16 @@ public class ProductServlet extends HttpServlet {
 			Product product = new Product();
 			product.setId(Integer.parseInt(id.toString()));
 			boolean state = product.read();
+			
+			Categorie categorie = new Categorie();
+			List<Categorie> categories = categorie.getAllAsModels(true);
+			
+			request.setAttribute("categories", categories);
+			
+			Supplier supplier = new Supplier();
+			List<Supplier> suppliers = supplier.getAllAsModels(true);
+			
+			request.setAttribute("suppliers", suppliers);
 			
 			request.setAttribute("product", product);
 		}
@@ -318,11 +329,13 @@ public class ProductServlet extends HttpServlet {
 				    String localStorageImagePath = getServletContext().getRealPath(File.separator+imagePath);
 			        File file = new File(localStorageImagePath);
 			        copyInputStreamToFile(fileContent, file);
+			        
+			        product.setImage(imagePath);
 				}
 				
+				
+				
 			}
-			
-	        product.setImage(imagePath);
 			
 			product.setPrice(Float.parseFloat(price.toString()));
 			product.setSize(size.toString());

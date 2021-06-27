@@ -16,6 +16,7 @@ public class Categorie extends Model {
     //felds
 	private String name;
 	private String description;
+	private String fa_icon;
 
 
     //Constructors
@@ -45,15 +46,22 @@ public class Categorie extends Model {
 	}
 
 
+    public String getFa_icon() {
+		return fa_icon;
+	}
 
+	public void setFa_icon(String fa_icon) {
+		this.fa_icon = fa_icon;
+	}
 
-    //
+	//
     @Override
     public boolean readRow(Map<String, Object> row) {
 
         this.id = (int) row.get("id");
 		this.name = (String) row.get("name");
 		this.description = (String) row.get("description");
+		this.fa_icon = (String) row.get("fa_icon");
 
 
         return true;
@@ -65,7 +73,7 @@ public class Categorie extends Model {
         Map<String,Object> row = new HashMap<>();
 		row.put("name",name);
 		row.put("description",description);
-
+		row.put("fa_icon",fa_icon);
 
         return row;
     }

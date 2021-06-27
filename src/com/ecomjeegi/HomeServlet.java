@@ -24,7 +24,7 @@ public class HomeServlet extends HttpServlet {
 		
 		Advertisement advertisement = new Advertisement();
 
-		List<Advertisement> advertisements = advertisement.getAllAsModels(true);
+		List<Advertisement> advertisements = advertisement.getAllOrderedByPositionAsModels(true);
 		rq.setAttribute("advertisements", advertisements);
 		
 		Product product = new Product();

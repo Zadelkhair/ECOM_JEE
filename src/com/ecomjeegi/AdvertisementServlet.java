@@ -4,6 +4,7 @@ import java.io.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.ecomjeegi.app.Database;
 import com.ecomjeegi.models.Advertisement;
 import com.ecomjeegi.models.Categorie;
+import com.ecomjeegi.models.Model;
 import com.ecomjeegi.models.Product;
 
 @MultipartConfig
@@ -38,7 +41,7 @@ public class AdvertisementServlet extends HttpServlet {
 		else {
 			
 			Advertisement advertisement = new Advertisement();
-			List<Advertisement> advertisements = advertisement.getAllAsModels(true);
+			List<Advertisement> advertisements = advertisement.getAllOrderedByPositionAsModels(true);
 			
 			request.setAttribute("advertisements", advertisements);
 		}
@@ -119,6 +122,7 @@ public class AdvertisementServlet extends HttpServlet {
 		Part filePart = request.getPart("image"); // Retrieves <input type="file" name="image">
 		
 		Object description = request.getParameter("description");
+		Object position = request.getParameter("position");
 		
 		
 		
@@ -128,6 +132,10 @@ public class AdvertisementServlet extends HttpServlet {
 		
 		if(description == null) {
 			errors.put("description", "description is required");
+		}
+		
+		if(position == null) {
+			//errors.put("position", "position is required");
 		}
 		
 		
@@ -155,8 +163,6 @@ public class AdvertisementServlet extends HttpServlet {
 		
 		Advertisement advertisement = new Advertisement();
 		
-
-
 		String imagePath = "img"+File.separator+"prod.jpg";
 		
 		if(filePart != null) {
@@ -177,6 +183,12 @@ public class AdvertisementServlet extends HttpServlet {
 		
 
 		advertisement.setDescription(description.toString());
+		
+		if(position!=null) {
+			int pos = Integer.parseInt(position.toString());
+			advertisement.clearAnyModalHasePosition(pos);
+			advertisement.setPosition(pos);
+		}
 		
 		Boolean state = advertisement.create();
 		
@@ -200,6 +212,7 @@ public class AdvertisementServlet extends HttpServlet {
 		Part filePart = request.getPart("image"); // Retrieves <input type="file" name="image">
 		
 		Object description = request.getParameter("description");
+		Object position = request.getParameter("position");
 		
 		if(id == null) {
 			errors.put("id_categorie", "id categorie is required");
@@ -207,6 +220,10 @@ public class AdvertisementServlet extends HttpServlet {
 		
 		if(description == null) {
 			errors.put("description", "description is required");
+		}
+		
+		if(position == null) {
+			//errors.put("position", "position is required");
 		}
 		
 		
@@ -244,13 +261,24 @@ public class AdvertisementServlet extends HttpServlet {
 				    String localStorageImagePath = getServletContext().getRealPath(File.separator+imagePath);
 			        File file = new File(localStorageImagePath);
 			        copyInputStreamToFile(fileContent, file);
+			        
+			        advertisement.setImage(imagePath);
 				}
+				
 				
 			}
 			
-	        advertisement.setImage(imagePath);
+			
+			
+	        
 
 			advertisement.setDescription(description.toString());
+			
+			if(position!=null) {
+				int pos = Integer.parseInt(position.toString());
+				advertisement.clearAnyModalHasePosition(pos);
+				advertisement.setPosition(pos);
+			}
 			
 			state = advertisement.update();
 		}
@@ -330,6 +358,5 @@ public class AdvertisementServlet extends HttpServlet {
         }
 
     }
-
 
 }

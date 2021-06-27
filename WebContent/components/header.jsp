@@ -220,6 +220,20 @@
                                 padding: 7px 7px;
                                 color: white;
                             }
+                            
+                            .adv-pos{
+                                font-weight: bold;
+							    color: white;
+							    display: flex;
+							    justify-content: center;
+							    align-items: center;
+							    height: 40px;
+							    width: 40px;
+							    border-radius: 100%;
+							    cursor: pointer;
+							    box-shadow: 0 0 4px 0 #00000042;
+							    background: #FF6F61;
+							 }
                         </style>
 
                         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>

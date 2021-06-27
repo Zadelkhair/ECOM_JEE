@@ -273,5 +273,29 @@ public class Product extends Model {
 		
 		return avgReviews/productReviews.size();
 	}
+	
+	public String getCategory() {
+		
+		Categorie categorie = new Categorie();
+		categorie.setId(this.category_id);
+		
+		if(categorie.read()) {
+			return categorie.getName();
+		}
+		
+		return "none";
+	}
+	
+	public String getSupplier() {
+		
+		Supplier supplier = new Supplier();
+		supplier.setId(this.supplier_id);
+		
+		if(supplier.read()) {
+			return supplier.getSupplier_name();
+		}
+		
+		return "none";
+	}
 
 }

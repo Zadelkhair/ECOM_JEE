@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ecomjeegi.app.App;
 import com.ecomjeegi.models.Categorie;
+import com.ecomjeegi.models.Order;
 import com.ecomjeegi.models.Product;
 import com.ecomjeegi.models.Role;
 import com.ecomjeegi.models.User;
@@ -238,6 +240,9 @@ public class RoleServlet extends HttpServlet {
 		if(state) {
 			state = role.delete();
 		}
+		
+		int id_user = App.getInstance().getAuth().getAuthentificatedUser().id;
+		
 		
 		if(state) {
 			response.sendRedirect(request.getRequestURI());

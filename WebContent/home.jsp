@@ -16,7 +16,7 @@
 
                                         <c:forEach items="${categories}" var="cat">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#"><i class="fa fa-female"></i>
+                                                <a class="nav-link" href="#"><i class="${cat.fa_icon}"></i>
                                                     ${cat.name}
                                                 </a>
                                             </li>
@@ -139,45 +139,45 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="category-item ch-400">
-                                    <img src="img/category-3.jpg" />
+                                    <img src="${advertisements[5].image}" />
                                     <a class="category-name" href="">
-                                        <p>Some text goes here that describes the image</p>
+                                        <p>${advertisements[0].description}</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="category-item ch-250">
-                                    <img src="img/category-4.jpg" />
+                                    <img src="${advertisements[6].image}" />
                                     <a class="category-name" href="">
-                                        <p>Some text goes here that describes the image</p>
+                                        <p>${advertisements[6].description}</p>
                                     </a>
                                 </div>
                                 <div class="category-item ch-150">
-                                    <img src="img/category-5.jpg" />
+                                    <img src="${advertisements[7].image}" />
                                     <a class="category-name" href="">
-                                        <p>Some text goes here that describes the image</p>
+                                        <p>${advertisements[7].description}</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="category-item ch-150">
-                                    <img src="img/category-6.jpg" />
+                                    <img src="${advertisements[8].image}" />
                                     <a class="category-name" href="">
-                                        <p>Some text goes here that describes the image</p>
+                                        <p>${advertisements[8].description}</p>
                                     </a>
                                 </div>
                                 <div class="category-item ch-250">
-                                    <img src="img/category-7.jpg" />
+                                    <img src="${advertisements[9].image}" />
                                     <a class="category-name" href="">
-                                        <p>Some text goes here that describes the image</p>
+                                        <p>${advertisements[9].description}</p>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="category-item ch-400">
-                                    <img src="img/category-8.jpg" />
+                                    <img src="${advertisements[10].image}" />
                                     <a class="category-name" href="">
-                                        <p>Some text goes here that describes the image</p>
+                                        <p>${advertisements[10].description}</p>
                                     </a>
                                 </div>
                             </div>

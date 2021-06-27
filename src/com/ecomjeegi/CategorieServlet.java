@@ -112,6 +112,7 @@ public class CategorieServlet extends HttpServlet {
 		
 		Object name = request.getParameter("name");
 		Object description = request.getParameter("description");
+		Object fa_icon = request.getParameter("fa_icon");
 		
 		if(name == null) {
 			errors.put("name", "name is required");
@@ -119,6 +120,10 @@ public class CategorieServlet extends HttpServlet {
 		
 		if(description == null) {
 			errors.put("description", "description is required");
+		}
+		
+		if(fa_icon == null) {
+			//errors.put("fa_icon", "fa_icon is required");
 		}
 		
 		if(errors.size()>0) {
@@ -141,6 +146,7 @@ public class CategorieServlet extends HttpServlet {
 		Categorie categorie = new Categorie();
 		categorie.setDescription(description.toString());
 		categorie.setName(name.toString());
+		categorie.setFa_icon(fa_icon.toString());
 		Boolean state = categorie.create();
 		
 		if(state) {
@@ -161,6 +167,7 @@ public class CategorieServlet extends HttpServlet {
 		Object id = request.getParameter("id");
 		Object name = request.getParameter("name");
 		Object description = request.getParameter("description");
+		Object fa_icon = request.getParameter("fa_icon");
 		
 		if(id == null) {
 			errors.put("id_categorie", "id categorie is required");
@@ -172,6 +179,10 @@ public class CategorieServlet extends HttpServlet {
 		
 		if(description == null) {
 			errors.put("description", "description is required");
+		}
+		
+		if(description == null) {
+			//errors.put("fa_icon", "fa_icon is required");
 		}
 		
 		if(errors.size()>0) {
@@ -198,6 +209,7 @@ public class CategorieServlet extends HttpServlet {
 		if(state) {
 			categorie.setName(name.toString());
 			categorie.setDescription(description.toString());
+			categorie.setFa_icon(fa_icon.toString());
 			state = categorie.update();
 		}
 		

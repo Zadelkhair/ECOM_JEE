@@ -94,6 +94,14 @@
 													</div>
 
 													<div class="col-12">
+														<div class="form-group">
+															<label for="position">position</label>
+															<input type="number" name="position" class="form-control"
+																placeholder="position" value="${advertisement.position}" />
+														</div>
+													</div>
+
+													<div class="col-12">
 														<input type="submit" class="btn btn-primary" />
 													</div>
 
@@ -117,6 +125,7 @@
 														<th scope="col">No</th>
 														<th scope="col">image</th>
 														<th scope="col">description</th>
+														<th scope="col">position</th>
 														<th scope="col">Action</th>
 													</tr>
 												</thead>
@@ -137,6 +146,14 @@
 																</c:if>
 															</td>
 															<td>${adv.description}</td>
+															<td>
+																<c:if test="${adv.position != -1}" >
+																	<div class="adv-pos" >${adv.position}</div>
+																</c:if>	
+																<c:if test="${adv.position == -1}" >
+																	<div class="adv-pos bg-secondary" >-</div>
+																</c:if>	
+															</td>
 															<td>
 																<a id="editBtn" style="background: none;border: none;"
 																	class="mr-2 p-0 m-0 text-success"
