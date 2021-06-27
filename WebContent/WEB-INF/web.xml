@@ -90,6 +90,10 @@
 	  		<servlet-name>UserServlet</servlet-name>
 	  		<servlet-class>com.ecomjeegi.UserServlet</servlet-class>
 	  	</servlet>
+	  	<servlet>
+	  		<servlet-name>SupplierServlet</servlet-name>
+	  		<servlet-class>com.ecomjeegi.SupplierServlet</servlet-class>
+	  	</servlet>
 	  	<filter>
 	  		<filter-name>authFilter</filter-name>
 	  		<filter-class>com.ecomjeegi.filters.AuthFilter</filter-class>
@@ -184,6 +188,10 @@
 	  		<servlet-name>RoleServlet</servlet-name>
 	  		<url-pattern>/dashboard/role</url-pattern>
 	  	</servlet-mapping>
+	  		<servlet-mapping>
+	  		<servlet-name>SupplierServlet</servlet-name>
+	  		<url-pattern>/dashboard/supplier</url-pattern>
+	  	</servlet-mapping>
   	<!-- END Dashboard pages / -->
   	
   	<!-- SRATY myaccount Pages -->
@@ -193,7 +201,7 @@
 		</servlet-mapping>
 		<servlet-mapping>
 			<servlet-name>MyOrderServlet</servlet-name>
-			<url-pattern>/myaccount/order</url-pattern>
+			<url-pattern>/myaccount/myorders</url-pattern>
 		</servlet-mapping>
   	<!-- END myaccount Pages / -->
 	

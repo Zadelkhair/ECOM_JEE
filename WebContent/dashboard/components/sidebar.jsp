@@ -17,6 +17,8 @@
                 href="${MyConfig.getHost()}dashboard/advertisement"><i class="fas fa-ad"></i>Advertisements</a>
             <a class="nav-link dash-nav-link" id="dashboarduserlink" href="${MyConfig.getHost()}dashboard/user"><i
                     class="fa fa-user" aria-hidden="true"></i>Users</a>
+                        <a class="nav-link dash-nav-link" id="dashboarduserlink" href="${MyConfig.getHost()}dashboard/supplier"><i
+                    class="fa fa-user" aria-hidden="true"></i>Supplier</a>
             <a class="nav-link dash-nav-link" id="dashboardrolelink" href="${MyConfig.getHost()}dashboard/role"><i
                     class="fa fa-key" aria-hidden="true"></i> Roles</a>
             <a class="nav-link dash-nav-link" id="dashboardpermissionlink"
