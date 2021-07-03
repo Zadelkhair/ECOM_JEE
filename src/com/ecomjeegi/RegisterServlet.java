@@ -44,33 +44,68 @@ public class RegisterServlet extends HttpServlet {
 		if(username==null){
 			errors.put("username", "username is required");
 		}
+		else {
+			if(username.toString().length()<=3) {
+				errors.put("username", "length should be more than 3 chars");
+			}
+		}
 		
 		if(password==null){
 			errors.put("password", "password is required");
 			
 		}
+		else {
+			if(password.toString().length()<=3) {
+				errors.put("password", "length should be more than 3 chars");
+			}
+		}
 		
 		if(email==null){
 			errors.put("email", "email is required");
 		}
+		else {
+			if(email.toString().length()<=3) {
+				errors.put("email", "length should be more than 3 chars");
+			}
+		}
 
 		if(city==null){
-			errors.put("username", "username is required");
+			errors.put("city", "city is required");
+		}
+		else {
+			if(email.toString().length()<=3) {
+				errors.put("city", "length should be more than 3 chars");
+			}
 		}
 		
 		if(phone==null){
 			errors.put("phone", "phone is required");
 		}
+		else {
+			if(phone.toString().length()<=9) {
+				errors.put("phone", "length should be more than 9 chars");
+			}
+		}
 		
 		if(address==null){
-			errors.put("phone", "phone is required");
+			errors.put("address", "address is required");
+		}
+		else {
+			if(address.toString().length()<=9) {
+				errors.put("address", "length should be more than 9 chars");
+			}
 		}
 
 		// validation
 		if(errors.size()>0){
-			req.setAttribute("errors", errors);
+			String error = "";
+			for (Map.Entry<String, Object> er : errors.entrySet()) {
+			    error+=er.getKey()+" : "+er.getValue().toString()+";";
+			}
+			resp.sendRedirect(req.getRequestURI()+"?error="+error);
 			return;
 		}
+		
 		
 		User user = new User();
 		user.setUsername((String)username);

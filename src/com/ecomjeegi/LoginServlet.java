@@ -45,7 +45,22 @@ public class LoginServlet extends HttpServlet {
 		if(password==null)
 			return;
 		
+		String errors = "";
 		// TODO check if request data are valid
+		if(username.toString().length()<=3) {
+			errors +=  "username is required";
+			
+		}
+		
+		if(password.toString().length()<=3) {
+			errors +=  ";password is required";
+			
+		}
+		
+		if(errors.length()>0) {
+			resp.sendRedirect(req.getRequestURI()+"?error="+errors);
+			return;
+		}
 		
 		//check username and password
 		AuthentificationController authController = new AuthentificationController();
@@ -75,7 +90,7 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		else {
-			resp.sendRedirect(req.getRequestURI()+"?error");
+			resp.sendRedirect(req.getRequestURI()+"?error=password or username are not correct");
 			return;
 		}
 		

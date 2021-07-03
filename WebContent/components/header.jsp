@@ -34,207 +34,7 @@
                         <!-- Template Stylesheet -->
                         <link href="${MyConfig.getHost()}css/style.css" rel="stylesheet">
 
-                        <style>
-                            .btn-reverse {
-                                background: #FF6F61 !important;
-                                color: white !important;
-                            }
-
-                            .btn-reverse:hover {
-                                color: #FF6F61 !important;
-                                background: white !important;
-                            }
-
-                            .header-slider {
-                                height: 400px;
-                                overflow: hidden;
-
-                            }
-
-
-                            .header-slider .slick-list {
-                                height: 100%;
-                                position: relative;
-                                overflow: hidden;
-                            }
-
-                            .header-slider .slick-list .slick-track {
-                                height: 100% !important;
-                                overflow: hidden;
-
-                            }
-
-                            .header-slider .header-slider-item {
-                                overflow: hidden;
-                            }
-
-                            .header-slider .slick-list .slick-track img {
-                                transform: translate(-50%, -50%);
-                                top: 50%;
-                                left: 50%;
-                                max-width: 140%;
-                                min-width: 100%;
-                                position: absolute;
-                            }
-
-                            .header-slider .slick-dots {
-                                display: none;
-                            }
-
-                            .product-item {
-                                position: relative;
-                                background: white;
-                            }
-
-                            .product-item:hover .n-stars-icon {
-                                transition: ease .2s;
-                                opacity: .2;
-                            }
-
-                            .product-item .product-image {
-                                position: relative;
-                                height: 260px;
-                                overflow: hidden;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                            }
-
-                            .product-item .product-image a {
-                                height: 100%;
-                            }
-
-                            .product-item .product-image img {
-                                height: 100%;
-                                width: auto;
-                                transition: all .3s;
-                            }
-
-                            .sidebar-widget.category .navbar .nav-link {
-                                padding-right: 0;
-                                padding-left: 0;
-                                background: none;
-                                border: none;
-                                padding: 10px 20px;
-                                width: 100%;
-                                text-align: left;
-                                border-radius: 5px;
-                            }
-
-                            .sidebar-widget.category .navbar .nav-link:hover,
-                            .sidebar-widget.category .navbar button.currentcat {
-                                background: #e96d5f !important;
-                                color: white !important;
-                            }
-
-                            .sidebar-widget.category .navbar .nav-link:hover i,
-                            .sidebar-widget.category .navbar button.currentcat i {
-                                color: white !important;
-                            }
-
-                            .sidebar-widget.category .navbar .nav-link i {
-                                color: #e96d5f !important;
-                            }
-
-                            .form-control,
-                            .custom-select {
-                                border-color: black;
-                            }
-
-                            .product-item .product-image .product-action button {
-                                display: inline-block;
-                                width: 40px;
-                                height: 40px;
-                                margin-right: 5px;
-                                padding: 7px 0 10px 0;
-                                font-size: 16px;
-                                text-align: center;
-                                color: #ffffff;
-                                background: #FF6F61;
-                                border: 1px solid #ffffff;
-                                border-radius: 4px;
-                                transition: all .3s;
-                                margin-top: 50px;
-                            }
-
-                            .product-item:hover .product-image .product-action button {
-                                margin-top: 0;
-                            }
-
-                            .product-item .product-image .product-action button:last-child {
-                                margin-right: 0;
-                            }
-
-                            .product-item .product-image .product-action button:hover {
-                                color: #FF6F61;
-                                background: #ffffff;
-                                border: 1px solid #FF6F61;
-                            }
-
-                            .navbar {
-                                align-items: unset;
-                            }
-
-                            .img-container {
-                                overflow: hidden;
-                                display: flex;
-                                align-items: center;
-                                /* padding: 20px; */
-                                position: relative;
-                                height: 300px;
-                                margin: 0 20px;
-                            }
-
-                            .img-container img {
-                                position: absolute;
-                                height: 100%;
-                                transform: translateX(-50%);
-                                left: 50%;
-                            }
-
-                            .order-prof-item {
-                                box-shadow: 0 0 8px 1px #0000002e;
-                                border: 1px solid #e4e4e4;
-                                border-radius: 5px;
-                            }
-
-                            .order-prod-image {
-                                height: 200px;
-                            }
-
-                            .order-prod-image img {
-                                object-fit: cover;
-                                width: 100%;
-                                height: 100%;
-                            }
-
-                            .order-prof-item .order-prod-details {
-                                padding: 10px;
-                                font-size: 15px;
-                            }
-
-                            .status-order {
-                                border-radius: 25px;
-                                font-size: 11px;
-                                font-weight: bold;
-                                padding: 7px 7px;
-                                color: white;
-                            }
-                            
-                            .adv-pos{
-                                font-weight: bold;
-							    color: white;
-							    display: flex;
-							    justify-content: center;
-							    align-items: center;
-							    height: 40px;
-							    width: 40px;
-							    border-radius: 100%;
-							    cursor: pointer;
-							    box-shadow: 0 0 4px 0 #00000042;
-							    background: #FF6F61;
-							 }
-                        </style>
+                        
 
                         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
@@ -372,7 +172,7 @@
                             }
 
                             shoppingList.loadCookies();
-
+                            
 
                         </script>
 
@@ -526,7 +326,8 @@
                                                         document.querySelector('#shoppinglistlink').href = '${MyConfig.getHost()}myshoppinglist?shoppinglist=' + shoppingList.toString();
                                                         document.querySelector('#shoppinglistlink2').href = '${MyConfig.getHost()}myshoppinglist?shoppinglist=' + shoppingList.toString();
                                                     });
-
+													
+                                                    
                                                 </script>
                                             </a>
                                         </div>

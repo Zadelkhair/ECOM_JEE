@@ -16,7 +16,6 @@ import com.ecomjeegi.models.Order;
 import com.ecomjeegi.models.OrderDetail;
 import com.ecomjeegi.models.Role;
 
-
 public class OrderServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +46,6 @@ public class OrderServlet extends HttpServlet {
 		request.getRequestDispatcher("/dashboard/order.jsp").forward(request, response);
 	
 	}
-	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -130,10 +128,6 @@ public class OrderServlet extends HttpServlet {
 		
 	}
 
-	
-	
-
-
 	private void create(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ParseException {
 
 		//errors map will carre all request errors
@@ -204,7 +198,6 @@ public class OrderServlet extends HttpServlet {
 		}
 	}
 
-	
 	private void update(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ParseException {
 		//errors map will carre all request errors
 		Map<String, String> errors = new HashMap<String, String>();
@@ -284,7 +277,6 @@ public class OrderServlet extends HttpServlet {
 		}
 		
 	}
-
 
 	private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//errors map will carre all request errors
@@ -381,7 +373,6 @@ public class OrderServlet extends HttpServlet {
 		}
 
 	}
-
 
 	private void confirm(HttpServletRequest request, HttpServletResponse response) throws IOException {
 

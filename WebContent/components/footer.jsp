@@ -103,5 +103,19 @@
         
         <!-- Template Javascript -->
         <script src="${MyConfig.getHost()}js/main.js"></script>
+        
+        <script>
+	        function notifyerror(){
+	            var url_string = window.location.href; 
+	            var url = new URL(url_string);
+	            var c = url.searchParams.get("error");
+	
+	            if(c){
+	            	$.notify('somthing wrong','error')
+	                c.split(';').forEach(m=>$.notify(m)) 
+	            }
+	        }
+	        notifyerror()
+        </script>
     </body>
 </html>

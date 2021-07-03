@@ -46,7 +46,8 @@ public class MyOrderServlet extends HttpServlet {
 		request.getRequestDispatcher("/myaccount/myorders.jsp").forward(request, response);
 
 	}
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("doPost");
 		
@@ -70,10 +71,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			System.out.print("error "+error.getKey()+" : " +error.getValue() );
 		}
 		
-		
 		if(errors.size()>0) {
 			
-			response.sendRedirect(request.getRequestURI()+"?error");
+			response.sendRedirect(request.getRequestURI()+"?error=somthing wrong");
 			return;
 			
 			/*
@@ -87,7 +87,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			return;
 			*/
 		}
-	else if (method.toString().equals("delete")) {
+		else if (method.toString().equals("delete")) {
 			
 			this.delete(request,  response);
 			

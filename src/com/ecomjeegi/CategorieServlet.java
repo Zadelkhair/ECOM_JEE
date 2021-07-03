@@ -69,7 +69,7 @@ public class CategorieServlet extends HttpServlet {
 		
 		if(errors.size()>0) {
 			
-			response.sendRedirect(request.getRequestURI()+"?error");
+			response.sendRedirect(request.getRequestURI()+"?error=Somthing wrong");
 			return;
 			
 			/*
@@ -128,7 +128,7 @@ public class CategorieServlet extends HttpServlet {
 		
 		if(errors.size()>0) {
 			
-			response.sendRedirect(request.getRequestURI()+"?error");
+			response.sendRedirect(request.getRequestURI()+"?error=somthing wront");
 			return;
 			
 			/*
@@ -154,7 +154,7 @@ public class CategorieServlet extends HttpServlet {
 			return;
 		}
 		else {
-			response.sendRedirect(request.getRequestURI()+"?error");
+			response.sendRedirect(request.getRequestURI()+"?error=Somthing wrong");
 			return;
 		}
 	}
@@ -218,7 +218,7 @@ public class CategorieServlet extends HttpServlet {
 			return;
 		}
 		else {
-			response.sendRedirect(request.getRequestURI()+"?error");
+			response.sendRedirect(request.getRequestURI()+"?error=Somthing wrong");
 			return;
 		}
 		
@@ -266,7 +266,7 @@ public class CategorieServlet extends HttpServlet {
 			return;
 		}
 		else {
-			response.sendRedirect(request.getRequestURI()+"?error");
+			response.sendRedirect(request.getRequestURI()+"?error=Somthing wrong");
 			return;
 		}
 		
